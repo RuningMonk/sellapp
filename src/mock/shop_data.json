@@ -1,0 +1,76 @@
+{
+	"goods": [
+		{
+			"class_name": "烤肉拌饭",
+			"foods": [
+				{
+					"name": "黑胡椒烤肉&鸡排双拼饭",
+					"price": 13,
+					"sell": 93,
+					"like": 0,
+					"tags": ["黑椒","大米","鸡肉"]
+				},
+				{
+					"name": "沙拉烤肉&鸡排双拼(小份)",
+					"price": 13.5,
+					"sell": 137,
+					"like": 0,
+					"tags": ["甜","鸡腿肉"]
+				}
+			]
+		},
+		{
+			"class_name": "实惠套餐区",
+			"foods": [
+				{
+					"name": "加可乐",
+					"price": 16,
+					"sell": 15,
+					"like": 0,
+					"tags": []
+				},
+				{
+					"name": "番茄烤肉拌饭+王老吉",
+					"price": 15,
+					"sell": 0,
+					"like": 0,
+					"tags": ["酸甜","大米","鸡肉"]
+				}
+			]
+		}
+	],
+	"comment": [
+		{
+			"name": "luo2912",
+			"time": "2018.09.27",
+			"point": 5,
+			"food": "",
+			"content": "asdfasvzxcvaerasdsdfvzxcasefsbgbwaezv",
+			"reply": "fadszcvaewfdfbfgvzxcvarehtyetqyerfadzfbzfrsbvxcv"
+		},
+		{
+			"name": "caL411956510",
+			"time": "2018.09.14",
+			"point": 5,
+			"food": "沙拉烤肉拌饭(小份)",
+			"content": "asdfasvzxcvaerasdsdfvzxcasefsbgbwaezv",
+			"reply": "fadszcvaewfdfbfgvzxcvarehtyetqyerfadzfbzfrsbvxcv"
+		},
+		{
+			"name": "XOk899055544",
+			"time": "2018.10.07",
+			"point": 5,
+			"food": "",
+			"content": "",
+			"reply": ""
+		}
+	],
+	"info": {
+		"position": "红光镇万基金蓝湾河边上商铺2负15号",
+		"safe": "",
+		"delivery": "美团跑腿",
+		"time": "10:00-14:00,16:00-20:00",
+		"announcement": "西华德馨园1.2.3送餐上楼中午11:00-13:00下午5:00-7:00",
+		"serve": ""
+	}
+}
