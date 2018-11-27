@@ -6,7 +6,7 @@
 =======
 # sellapp
 
-> A Vue.js project by WY
+> A Vue.js project by WY 2018-11-27
 
 ## Build Setup
 
