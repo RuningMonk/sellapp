@@ -119,7 +119,7 @@
 // 					let descript = '测试商品描述'
 // 					this.$store.dispatch('getPayState',{price,id,name,descript})
 					
-					this.$router.replace('/pay')
+					this.$router.replace('/pay/delivery')
 				}
 			}
 		},

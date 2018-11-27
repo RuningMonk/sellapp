@@ -4,6 +4,7 @@
 			<div class="positon_text">
 				<div class="title">
 					<span class="title_text">西华大学德馨苑1栋 2楼248</span>
+					<a class="inf_set"></a>
 				</div>
 				<span class="info">王毅(先生)&nbsp;&nbsp;13558739332</span>
 			</div>
@@ -11,6 +12,7 @@
 		<div class="send">
 			<div class="container">
 				<span class="send_text">立即送出</span>
+				<a class="inf_set"></a>
 				<span class="time_text">大约15:15送达</span>
 			</div>
 		</div>
@@ -78,6 +80,20 @@
 		color: #348BED;
 		line-height: 60px;
 		float: right;
+	}
+	
+	.inf_set {
+		background-image: url(../../../static/img/right.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		float: right;
+		opacity: 0.4;
+		width: 20px;
+		height: 20px;
+		margin-top: 21px;
+		margin-left: 5px;
+		margin-right: -5px;
+		display: block;
 	}
 	
 </style>
