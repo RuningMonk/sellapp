@@ -50,6 +50,7 @@
 <script>
 	import {reqLogin,reqLoginState,reqQuitLogin} from '../../api/index.js'
 	import Alert from '../../components/Alert/Alert.vue'
+	import {mapState} from 'vuex'
 	
 	export default{
 		data:function(){
@@ -109,8 +110,12 @@
 						}else{
 							//将个人数据保存在vuex中
 							this.$store.dispatch('recordUser',result.data)
-							//跳转至个人中心界面
-							this.$router.replace('/person')
+							//跳转
+							if(Object.keys(this.CartFoods).length>0){
+								this.$router.replace('/pay/delivery')
+							}else{
+								this.$router.replace('/person')
+							}
 						}
 					}
 				}
@@ -142,12 +147,16 @@
 			}
 		},
 		computed:{
+			...mapState([
+				'CartFoods'
+			]),
 			PhoneCheck(){
 				return /^1\d{10}$/.test(this.phone)
 			},
 			TimeShow(){
 				return this.time>0 ? "已发送("+this.time+')':'获取验证码'
 			}
+			
 		}
 	}
 </script>

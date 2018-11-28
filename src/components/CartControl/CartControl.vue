@@ -19,7 +19,7 @@
 			updatefoodcount(add){
 				this.$store.dispatch('updatefoodcount',{add,food:this.food})
 			}
-		},
+		}
 		
 	}
 	

@@ -60,7 +60,7 @@
 				'Stores',
 				'Shopid',
 				'Info',
-				'Pay'
+				'Userinfo'
 			]),
 			...mapGetters([
 				'totalCount',
@@ -81,7 +81,6 @@
 		methods:{
 			...mapActions([
 				'initcart',
-				'getPayState'
 			]),
 			toggleShow(){
 				if(this.totalCount){
@@ -113,19 +112,18 @@
 			},
 			goPay(){
 				if(this.pay=='去结算'){
-// 					let price = this.totalPrice
-// 					let id = Math.ceil(Math.random()*1000000000000000000).toString()
-// 					let name = '测试商品'
-// 					let descript = '测试商品描述'
-// 					this.$store.dispatch('getPayState',{price,id,name,descript})
+					//对登录状态的判断
+					if(!this.Userinfo.phone){
+						MessageBox.alert('请先登录!').then(
+							action => {
+								this.$router.replace('/login')
+							}
+						)
+					}else{
+						this.$router.replace('/pay/delivery')
+					}
 					
-					this.$router.replace('/pay/delivery')
 				}
-			}
-		},
-		watch:{
-			Pay(value){
-				window.location.href=this.Pay
 			}
 		}
 	}

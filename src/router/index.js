@@ -6,11 +6,12 @@ const Home = () => import('../pages/Home/Home.vue')
 const Order = () => import('../pages/Order/Order.vue')
 const Person = () => import('../pages/Person/Person.vue')
 const Lightning = () => import('../pages/Lightning/Lightning.vue')
+// const Pay = () => import('../pages/Pay/Pay.vue')
 
 import Login from '../pages/Login/Login.vue'
 import Userinf from '../pages/Userinf/Userinf.vue'
 import Shop from '../pages/Shop/Shop.vue'
-import Pay from '../Pages/Pay/Pay.vue'
+import Pay from '../pages/Pay/Pay.vue'
 import ShopGoods from '../components/Shop_Goods/Shop_Goods.vue'
 import ShopComment from '../components/Shop_Comment/Shop_Comment.vue'
 import ShopStore from '../components/Shop_Store/Shop_Store.vue'

@@ -100,6 +100,7 @@
 		async mounted(){
 			this.recordShopinfo(JSON.parse(sessionStorage.getItem('shop_info')) || this.Info)
 			this.$store.dispatch('getGoodsList',this.Info.ID)
+			this.$store.dispatch('initcart')
 			
 			$("#goods").click()
 		}

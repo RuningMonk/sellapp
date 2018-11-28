@@ -1,6 +1,6 @@
 <template>
-	<div id="Pay_delivery">
-		<div class="position container">
+	<div id="Pay_delivery" class="container">
+		<div class="position">
 			<div class="positon_text">
 				<div class="title">
 					<span class="title_text">西华大学德馨苑1栋 2楼248</span>
@@ -25,6 +25,7 @@
 </script>
 
 <style scoped="scoped">
+	
 	#Pay_delivery {
 		width: 95vw;
 		height: 150px;

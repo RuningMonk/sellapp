@@ -41,6 +41,24 @@
 				</div>
 			</div>
 		</div>
+		<div class="protect container">
+			<div class="protect_text">
+				<div class="protect_name">
+					<img src="../../../static/img/lock.png" class="protect_img">
+					号码保护
+					<img src="../../../static/img/question.png" class="protect_img">
+				</div>
+				<div class="protect_switch">
+					<div class="switch_container">
+						<div class="bg_con">
+							<input id="switch" type="checkbox" class="switch"/>
+							<label for="switch"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="protect_descript">对商家、骑手隐藏您的真实手机号，保护您的隐私</div>
+		</div>
 		<div class="remark container">
 			<div>
 				<div class="remark_name">备注</div>
@@ -63,13 +81,14 @@
 		</div>
 		<div class="bottom">
 			<div class="price">合计 ¥<span>{{this.totalPrice+this.Info.fee}}</span></div>
-			<div class="pay">提交订单</div>
+			<div class="pay" @click="goPay()">提交订单</div>
 		</div>
 	</div>
 </template>
 
 <script>
 	import {
+		mapActions,
 		mapState,
 		mapGetters
 	} from 'vuex'
@@ -81,19 +100,34 @@
 			}
 		},
 		methods: {
+			...mapActions([
+				'getPayState'
+			]),
 			settab(index) {
 				this.tabindex = index
+			},
+			goPay(){
+				let price = this.totalPrice
+				let id = Math.ceil(Math.random()*1000000000000000000).toString()
+				let name = '测试商品'
+				let descript = '测试商品描述'
+				this.$store.dispatch('getPayState',{price,id,name,descript})
 			}
 		},
 		computed: {
 			...mapState([
 				'Info',
 				'CartFoods',
-
+				'Pay',
 			]),
 			...mapGetters([
 				'totalPrice'
 			])
+		},
+		watch:{
+			Pay(value){
+				window.location.href=this.Pay
+			}
 		}
 	}
 </script>
@@ -366,6 +400,7 @@
 	.remark_name {
 		float: left;
 		font-size: 16px;
+		font-weight: bold;
 		line-height: 40px;
 	}
 
@@ -426,5 +461,110 @@
 		font-size: 18px;
 		font-weight: bold;
 		line-height: 60px;
+	}
+
+	.protect {
+		margin-top: 5px;
+		width: 95vw;
+		height: 65px;
+		background-color: #FFFFFF;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 5px;
+	}
+
+	.protect_text {
+		width: 100%;
+		height: 40px;
+		float: left;
+	}
+
+	.protect_name {
+		width: 80%;
+		height: 100%;
+		float: left;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 40px;
+	}
+	
+	.protect_img{
+		width: 15px;
+		height: 15px;
+		margin-top: -4px;
+	}
+
+	.protect_switch {
+		width: 20%;
+		height: 100%;
+		float: left;
+		text-align: right;
+	}
+
+	.protect_descript {
+		width: 100%;
+		float: left;
+		font-size: 12px;
+		color: #999999;
+		margin-top: -5px;
+	}
+
+	/* 切换的开关 */
+
+	.switch_container {
+		margin-top: 10px;
+	}
+
+	.switch {
+		display: none;
+	}
+
+	.switch_container label {
+		position: relative;
+		display: block;
+		padding: 1px;
+		border-radius: 24px;
+		height: 22px;
+		width: 40px;
+		margin-bottom: 0px;
+		background-color: #eee;
+		cursor: pointer;
+		vertical-align: top;
+		-webkit-user-select: none;
+		float: right;
+	}
+
+	.switch_container label:before {
+		content: '';
+		display: block;
+		border-radius: 24px;
+		height: 22px;
+		background-color: white;
+		-webkit-transform: scale(1, 1);
+		-webkit-transition: all 0.3s ease;
+	}
+
+	.switch_container label:after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -10px;
+		margin-left: -11px;
+		width: 22px;
+		height: 22px;
+		border-radius: 22px;
+		background-color: white;
+		box-shadow: -1px 1px 1px 1px rgba(0, 0, 0, 0.28);
+		-webkit-transform: translateX(-9px);
+		-webkit-transition: all 0.3s ease;
+	}
+
+	.switch:checked~label:after {
+		-webkit-transform: translateX(9px);
+	}
+
+	.switch:checked~label:before {
+		background-color: #ffd705;
 	}
 </style>
