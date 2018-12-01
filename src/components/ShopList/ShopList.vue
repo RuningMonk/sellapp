@@ -37,34 +37,19 @@
 		</div>
 		<div class="svg" style="text-align: center" v-else>
 			<svg version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-			  viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
-			  <circle fill="#bdb1b1" stroke="none" cx="6" cy="50" r="6">
-			    <animateTransform 
-			       attributeName="transform" 
-			       dur="1s" 
-			       type="translate" 
-			       values="0 15 ; 0 -15; 0 15" 
-			       repeatCount="indefinite" 
-			       begin="0.1"/>
-			  </circle>
-			  <circle fill="#bdb1b1" stroke="none" cx="30" cy="50" r="6">
-			    <animateTransform 
-			       attributeName="transform" 
-			       dur="1s" 
-			       type="translate" 
-			       values="0 10 ; 0 -10; 0 10" 
-			       repeatCount="indefinite" 
-			       begin="0.2"/>
-			  </circle>
-			  <circle fill="#bdb1b1" stroke="none" cx="54" cy="50" r="6">
-			    <animateTransform 
-			       attributeName="transform" 
-			       dur="1s" 
-			       type="translate" 
-			       values="0 5 ; 0 -5; 0 5" 
-			       repeatCount="indefinite" 
-			       begin="0.3"/>
-			  </circle>
+			 viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+				<circle fill="#bdb1b1" stroke="none" cx="6" cy="50" r="6">
+					<animateTransform attributeName="transform" dur="1s" type="translate" values="0 15 ; 0 -15; 0 15" repeatCount="indefinite"
+					 begin="0.1" />
+				</circle>
+				<circle fill="#bdb1b1" stroke="none" cx="30" cy="50" r="6">
+					<animateTransform attributeName="transform" dur="1s" type="translate" values="0 10 ; 0 -10; 0 10" repeatCount="indefinite"
+					 begin="0.2" />
+				</circle>
+				<circle fill="#bdb1b1" stroke="none" cx="54" cy="50" r="6">
+					<animateTransform attributeName="transform" dur="1s" type="translate" values="0 5 ; 0 -5; 0 5" repeatCount="indefinite"
+					 begin="0.3" />
+				</circle>
 			</svg>
 		</div>
 		<div class="bottom"></div>
@@ -73,94 +58,106 @@
 
 <script>
 	import Stars from '../Stars/Stars.vue'
-	import {mapActions,mapState} from 'vuex'
-	
-	export default{
+	import {
+		mapActions,
+		mapState
+	} from 'vuex'
+
+	export default {
 		computed: {
 			...mapState(['Stores']),
-			
+
 		},
-		methods:{
+		methods: {
 			...mapActions([
 				'recordShopinfo',
-				
+
 			]),
-			updateinfo(item){
-				this.$store.dispatch('recordShopinfo',item)
+			updateinfo(item) {
+				//更新当前访问位置
+				this.$store.dispatch('recordShopinfo', item)
+				//高度滚回0
+				window.scrollTo(0, 0)
+				//跳转进店铺
 				this.$router.push('/shop')
 			}
 		},
-		components:{
+		components: {
 			Stars
 		}
 	}
 </script>
 
 <style scoped="scoped">
-	#ShopList{
+	#ShopList {
 		margin-top: -20px;
 	}
-	
-	.list_header span{
+
+	.list_header span {
 		font-size: 17px;
 		font-weight: bold;
 		padding-left: 10px;
 		float: left;
 		width: 100%;
 	}
-	
-	.sort{
+
+	.sort {
 		width: 100%;
 		height: 30px;
 		float: left;
-		
+
 	}
-	
-	.Store{
+
+	.Store {
 		margin-left: 10px;
 		height: 130px;
 	}
-	
-	.Store_img{
+
+	.Store_img {
 		width: 25%;
 		height: 100%;
 		float: left;
+		text-align: center;
 	}
-	
-	.Store_img img{
+
+	.Store_img img {
 		width: 100%;
-		height: 55%;
+		max-width: 90px;
+		max-height: 70px;
 		margin-top: 8px;
 		border-radius: 5px;
+		
 	}
-	
-	.Store_inf{
+
+	.Store_inf {
 		width: 75%;
 		height: 100%;
 		float: left;
 	}
-	
-	.Store_inf div{
+
+	.Store_inf div {
 		float: left;
 		width: 100%;
 	}
-	
-	.bottom{
+
+	.bottom {
 		display: block;
 		width: 100%;
-		height: 45px;
+		height: 60px;
 	}
-	
-	.list_header,.list_inf,.bottom{
+
+	.list_header,
+	.list_inf,
+	.bottom {
 		float: left;
 	}
-	
-	.list_inf{
+
+	.list_inf {
 		height: 519px;
 		overflow: hidden;
 	}
-	
-	.inf_name{
+
+	.inf_name {
 		width: 80%;
 		height: 20%;
 		font-size: 16px;
@@ -169,8 +166,8 @@
 		color: black;
 		text-decoration: none;
 	}
-	
-	.inf_more{
+
+	.inf_more {
 		background-image: url(./img/more.png);
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -179,54 +176,54 @@
 		margin-top: 3px;
 		margin-left: 26px;
 	}
-	
-	.star-lv{
+
+	.star-lv {
 		padding-left: 5px;
 		margin-top: 5px;
 		width: 100%;
 	}
-	
-	.star_points{
+
+	.star_points {
 		text-align: center;
-    margin-top: -3.5px;
-    font-size: 13px;
-    display: block;
-    width: 10%;
-    float: left;
+		margin-top: -3.5px;
+		font-size: 13px;
+		display: block;
+		width: 10%;
+		float: left;
 	}
-	
-	.sells{
+
+	.sells {
 		font-size: 12px;
-    width: 25%;
-    float: left;
-    margin-top: -2px;
-    display: block;
-    text-align: center;
+		width: 25%;
+		float: left;
+		margin-top: -2px;
+		display: block;
+		text-align: center;
 	}
-	
-	.distance{
+
+	.distance {
 		font-size: 12px;
 		width: 30%;
 		float: right;
 		margin-top: -2px;
 	}
-	
-	.much_inf{
+
+	.much_inf {
 		font-size: 12px;
 		float: left;
 		width: 100%;
 		padding-left: 8px;
 		margin-top: 5px;
 	}
-	
-	.tag{
+
+	.tag {
 		font-size: 12px;
 		margin-top: 5px;
 		padding-left: 8px;
 		width: 100%;
 	}
-	
-	.tag_img{
+
+	.tag_img {
 		background-image: url('./img/little_store.png');
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -235,15 +232,15 @@
 		margin-top: 3px;
 		float: left;
 	}
-	
-	.tag_words{
+
+	.tag_words {
 		margin-left: 5px;
 		margin-bottom: 3px;
 		float: left;
 		width: 80%;
 	}
-	
-	.tag_box{
+
+	.tag_box {
 		border-style: solid;
 		border-width: 1px;
 		border-color: #52c1b3;
@@ -253,8 +250,8 @@
 		color: #52c1b3;
 		float: left;
 	}
-	
-	.tag_more{
+
+	.tag_more {
 		background-image: url(./img/down.png);
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -264,29 +261,29 @@
 		height: 15px;
 		float: left;
 	}
-	
-	.red{
+
+	.red {
 		border-color: #fb756c;
 		color: #FB756C;
 	}
-	
-	.get{
+
+	.get {
 		background-color: #fef6f5;
 	}
-	
+
 	/* svg */
-	
-	*, html {
-	  margin: 0;
-	  padding: 0;
+
+	*,
+	html {
+		margin: 0;
+		padding: 0;
 	}
-	
+
 	svg {
-	  width: 100px;
-	  height: 100px;
-	  margin-top: 50px;
-	  margin-right: 30px;
-	  display: inline-block;
+		width: 100px;
+		height: 100px;
+		margin-top: 50px;
+		margin-right: 30px;
+		display: inline-block;
 	}
-	
 </style>

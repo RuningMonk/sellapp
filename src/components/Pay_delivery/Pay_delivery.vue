@@ -9,12 +9,10 @@
 				<span class="info">王毅(先生)&nbsp;&nbsp;13558739332</span>
 			</div>
 		</div>
-		<div class="send">
-			<div class="container">
-				<span class="send_text">立即送出</span>
-				<a class="inf_set"></a>
-				<span class="time_text">大约15:15送达</span>
-			</div>
+		<div class="send container">
+			<span class="send_text">立即送出</span>
+			<a class="inf_set"></a>
+			<span class="time_text">大约15:15送达</span>
 		</div>
 	</div>
 </template>
@@ -66,6 +64,7 @@
 		width: 100%;
 		height: 60px;
 		float: left;
+		padding: 0;
 	}
 	
 	.send_text{

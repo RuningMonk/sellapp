@@ -9,6 +9,7 @@ import {
 	RECEIVE_USER_INFO,
 	RECEIVE_GOODS,
 	RECEIVE_COMMENTS,
+	RECEIVE_HISTORY,
 	RESET_USER_INFO,
 	SET_SHOP_INFO,
 	ADD_FOOD_COUNT,
@@ -38,6 +39,9 @@ export default {
 	},
 	[RECEIVE_COMMENTS](state, {comments}) {
 		state.Comments = comments
+	},
+	[RECEIVE_HISTORY](state, {history}) {
+		state.History = history
 	},
 	[RESET_USER_INFO](state) {
 		state.Userinfo = {}

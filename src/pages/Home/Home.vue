@@ -10,7 +10,7 @@
 			</div>
 			<div class="head_bottom" @click="Search()">
 				<i class="text_icon"></i>
-				<input type="text" placeholder="盖浇饭" value="" class="search_input "/>
+				<input type="text" placeholder="盖浇饭" value="" class="search_input " />
 			</div>
 		</div>
 		<Home_Banner></Home_Banner>
@@ -22,49 +22,55 @@
 	import Home_Banner from '../../components/Home_Banner/Home_Banner.vue'
 	import ShopList from '../../components/ShopList/ShopList.vue'
 	import Search from '../../components/Search/Search.vue'
-	
-	import {reqStoreList,reqBanners} from '../../api/index.js'
-	import {mapActions,mapState} from 'vuex'
+
+	import {
+		reqStoreList,
+		reqBanners
+	} from '../../api/index.js'
+	import {
+		mapActions,
+		mapState
+	} from 'vuex'
 	import BScroll from 'better-scroll'
-	
-	
+
+
 	export default {
-		data(){
-			return{
-				Search_Show:false
+		data() {
+			return {
+				Search_Show: false
 			}
 		},
-		components:{
+		components: {
 			Home_Banner,
 			ShopList,
 			Search
 		},
-		async mounted(){
+		async mounted() {
 			this.getStores(),
-			this.getBannerList()
+				this.getBannerList()
 		},
-		methods:{
+		methods: {
 			...mapActions([
 				'getStores',
 				'getBannerList'
 			]),
-			Search(){
+			Search() {
 				this.$refs.search.toggleShow()
 			}
 		},
-		computed:{
+		computed: {
 			...mapState([
 				'Stores'
 			])
 		},
-		watch:{
-			Stores(value){
-				this.$nextTick(()=>{
-					if(!this.scroll){
-						this.scroll = new BScroll('.list_inf',{
-							click:true
+		watch: {
+			Stores(value) {
+				this.$nextTick(() => {
+					if (!this.scroll) {
+						this.scroll = new BScroll('.list_inf', {
+							click: true
 						})
-					}else{
+					} else {
 						this.scroll.refresh()
 					}
 				})
@@ -79,13 +85,13 @@
 		width: 100%;
 		height: 85px;
 	}
-	
-	.head_top{
+
+	.head_top {
 		width: 100%;
 		height: 40px;
 	}
-	
-	.head_bottom{
+
+	.head_bottom {
 		width: 100%;
 		height: 36px;
 	}
@@ -97,7 +103,7 @@
 		height: 22px;
 		width: 22px;
 		margin-top: 10px;
-		margin-left: 5px;
+		margin-left: 2.5%;
 		float: left;
 	}
 
@@ -107,7 +113,7 @@
 		display: block;
 		height: 22px;
 		width: 22px;
-		margin-right: 10px;
+		margin-right: 2.5%;
 		margin-top: 10px;
 		float: right;
 	}
@@ -116,6 +122,7 @@
 		font-size: 17px;
 		margin-top: 10px;
 		margin-bottom: 5px;
+		margin-left: 2.5%;
 		float: left;
 	}
 
@@ -127,15 +134,12 @@
 		width: 18px;
 		height: 18px;
 		margin-top: 10px;
-		margin-left: 18px;
+		margin-left: 5%;
 	}
 
 	.search_input {
-		margin-left: 10px;
-		margin-top: 0;
+		margin-left: 2.5%;
 		width: 95%;
-		padding-left: 30px;
+		padding-left: 8%;
 	}
-
-	
 </style>

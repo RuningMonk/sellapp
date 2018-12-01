@@ -8,6 +8,7 @@ export const RECEIVE_SEARCH = 'receive_search'			//接受搜索信息
 export const RECEIVE_USER_INFO = 'receive_user_info'	//接受用户信息
 export const RECEIVE_GOODS = 'receive_goods'			//接受商品信息
 export const RECEIVE_COMMENTS = 'receive_comments'		//接受商品评价
+export const RECEIVE_HISTORY = 'receive_history'		//接受订单历史
 export const RESET_USER_INFO = 'reset_user_info'		//重置用户信息
 
 

@@ -33,3 +33,5 @@ export const reqCommentsList = ({shop_id}) => ajax(BASE_URL+'/shop_comments',{sh
 export const reqStoreSearch = ({search}) => ajax(BASE_URL+'/search',{search})
 //13.支付
 export const reqPay = ({price,id,name,descript}) => ajax(BASE_URL+'/pay',{price,id,name,descript},'POST')
+//14.查询订单记录
+export const reqHistory = ({userphone}) => ajax(BASE_URL+'/history',{userphone},'POST')

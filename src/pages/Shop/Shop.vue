@@ -27,14 +27,8 @@
 								</div>
 							</div>
 							<div class="tags">
-								<span class="tag_box red">10减2</span>
-								<span class="tag_box red">25减4</span>
-								<span class="tag_box red">50减7</span>
-								<span class="tag_box red">5折起</span>
-								<span class="tag_box red">有机会领券</span>
-								<span class="tag_box red">返2元券</span>
+								<span class="tag_box red" v-for="(item,index) in this.Info.Store_tags" :key="item.ID" v-if="index<=4">{{item}}</span>
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -98,6 +92,8 @@
 			])
 		},
 		async mounted(){
+			
+			//获取当前店铺数据
 			this.recordShopinfo(JSON.parse(sessionStorage.getItem('shop_info')) || this.Info)
 			this.$store.dispatch('getGoodsList',this.Info.ID)
 			this.$store.dispatch('initcart')

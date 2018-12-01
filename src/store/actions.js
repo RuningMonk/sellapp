@@ -9,6 +9,7 @@ import {
 	RECEIVE_USER_INFO,
 	RECEIVE_GOODS,
 	RECEIVE_COMMENTS,
+	RECEIVE_HISTORY,
 	RESET_USER_INFO,
 	SET_SHOP_INFO,
 	ADD_FOOD_COUNT,
@@ -25,6 +26,7 @@ import {
 	reqQuitLogin,
 	reqGoodsList,
 	reqCommentsList,
+	reqHistory,
 	reqStoreSearch,
 	reqPay
 	
@@ -125,9 +127,17 @@ export default{
 		const result = await reqPay({price,id,name,descript})
 		
 		if(result.OK===true){
-			console.log(result.data)
 			const pay = result.data
 			commit(PAY_STATE,{pay})
+		}
+	},
+	//异步获取订单历史
+	async getHistory({commit},{userphone}){
+		const result = await reqHistory({userphone})
+		
+		if(result.OK===true){
+			const history = result.data
+			commit(RECEIVE_HISTORY,{history})
 		}
 	}
 }

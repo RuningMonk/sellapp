@@ -7,6 +7,7 @@ export default{
 	Stores:[],			//商家数组
 	Userinfo:[],		//用户信息
 	Goods:[],			//店铺商品
+	History:[],			//订单历史
 	Comments:[],		//商品评价
 	
 	Info:{},			//当前访问的店铺信息

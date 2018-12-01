@@ -17,7 +17,9 @@ import ShopComment from '../components/Shop_Comment/Shop_Comment.vue'
 import ShopStore from '../components/Shop_Store/Shop_Store.vue'
 import Search from '../components/Search/Search.vue'
 import Pay_delivery from '../components/Pay_delivery/Pay_delivery.vue'
-
+import Order_all from '../components/Order_all/Order_all.vue'
+import Order_evaluation from '../components/Order_evaluation/Order_evaluation.vue'
+import Order_refund from '../components/Order_refund/Order_refund.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +42,29 @@ export default new VueRouter({
 		{
 			path:'/order',
 			component:Order,
+			children:[
+				{
+					path:'/order/all',
+					component:Order_all,
+					meta:{
+						GuideShow:true
+					}
+				},
+				{
+					path:'/order/evaluation',
+					component:Order_evaluation,
+					meta:{
+						GuideShow:true
+					}
+				},
+				{
+					path:'/order/refund',
+					component:Order_refund,
+					meta:{
+						GuideShow:true
+					}
+				}
+			],
 			meta:{
 				GuideShow:true
 			}

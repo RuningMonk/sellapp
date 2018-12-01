@@ -1,39 +1,66 @@
 <template>
 	<div class="guide">
-		<div id="home" href="javascript:;" class="guide_items" :class="{on: '/home'===$route.path || '/'===$route.path}" @click="goto('/home','home')">
+		<router-link tag="div" to="/home" class="guide_items" :class="{on: Guideindex==0}" @click.native="setindex(0)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/home_none.png" />
 			</span>
 			<span>首页</span>
-		</div>
-		<div id="lightning" href="javascript:;" class="guide_items" :class="{on: '/lightning'===$route.path}" @click="goto('/lightning')">
+		</router-link>
+		<router-link tag="div" to="/lightning" class="guide_items" :class="{on: Guideindex==1}" @click.native="setindex(1)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/lightning_none.png" />
 			</span>
 			<span>闪购</span>
-		</div>
-		<div id="order" href="javascript:;" class="guide_items" :class="{on: '/order'===$route.path}" @click="goto('/order')">
+		</router-link>
+		<router-link tag="div" to="/order/all" class="guide_items" :class="{on: Guideindex==2}" @click.native="setindex(2)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/order-none.png" />
 			</span>
 			<span>订单</span>
-		</div>
-		<div id="person" href="javascript:;" class="guide_items" :class="{on: '/person'===$route.path}" @click="goto('/person')">
+		</router-link>
+		<router-link tag="div" to="/person" class="guide_items" :class="{on: Guideindex==3}" @click.native="setindex(3)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/mine.png" />
 			</span>
 			<span>我的</span>
-		</div>
+		</router-link>
 	</div>
 </template>
 
 <script>
 	export default{
-		methods:{
-			goto(path,id){
-				this.$router.replace(path);
-				
+		data(){
+			return{
+				Guideindex: 0
 			}
+		},
+		methods:{
+			setindex(index){
+				this.Guideindex = index
+			},
+			checktab(){
+				let url = window.location.href.substring(24)
+				switch(url){
+					case 'home':
+						this.setindex(0);
+						break;
+					case 'lightning':
+						this.setindex(1);
+						break;
+					case 'order':
+						this.setindex(2);
+						break;
+					case 'person':
+						this.setindex(3);
+						break;
+					default:
+						this.setindex(0);
+						break;
+				}
+			}
+		},
+		mounted(){
+			this.checktab()
 		}
 	}
 </script>
@@ -46,9 +73,9 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: #fff;
+		background-color: #F8F8F8;
 		width: 100%;
-		height: 50px;
+		height: 60px;
 		display: flex;
 	}
 	.guide_items{
@@ -63,7 +90,7 @@
 		height: 55px;
 	}
 	.item_icon{
-		margin-top: 6px;
+		margin-top: 12px;
 	}
 	.on{
 		color: #ffd705;

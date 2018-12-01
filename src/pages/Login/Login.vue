@@ -50,7 +50,7 @@
 <script>
 	import {reqLogin,reqLoginState,reqQuitLogin} from '../../api/index.js'
 	import Alert from '../../components/Alert/Alert.vue'
-	import {mapState} from 'vuex'
+	import {mapState,mapActions} from 'vuex'
 	
 	export default{
 		data:function(){
@@ -72,6 +72,9 @@
 			
 		},
 		methods:{
+			...mapActions([
+				'getStores'
+			]),
 			async login(){
 				if(this.show==true){//首次登陆(注册)
 					const {PhoneCheck,phone,Phone_code}=this

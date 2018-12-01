@@ -48,6 +48,7 @@
 	#head {
 		background-color: #FFD705;
 		height: 120px;
+		box-shadow: #666 0px 0px 10px;
 	}
 	
 	.other_img {

@@ -8,7 +8,9 @@
 			<router-link tag="div" to="/pay/delivery" @click.native="settab(0)" :class="{tab_left_on:tabindex==0,tab_left:tabindex==1}">外卖配送</router-link>
 			<router-link tag="div" to="/pay/self" @click.native="settab(1)" :class="{tab_right:tabindex==0,tab_right_on:tabindex==1}">到店自取</router-link>
 		</div>
-		<router-view></router-view>
+		<keep-alive>
+			<router-view/>
+		</keep-alive>
 		<div class="list container">
 			<div class="store">
 				<span class="store_name">{{this.Info.Store_name}}</span>
