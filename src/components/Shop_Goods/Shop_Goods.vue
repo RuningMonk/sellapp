@@ -55,8 +55,8 @@
 					<ul>
 						<li v-for="(good,index) in item.foods" :key="index" class="right_item">
 							<div class="item_left">
-								<!-- <img class="item_img" :src="'../../../static/img/goods/'+good.src" @click="FoodShow(good)" /> -->
-								<img class="item_img" v-lazy="'../../../static/img/goods/'+good.src" @click="FoodShow(good)"/>
+								<!-- <img class="item_img" v-lazy="'../../../static/img/goods/'+good.src" @click="FoodShow(good)"/> -->
+								<img class="item_img" v-lazy="good.src" @click="FoodShow(good)"/>
 							</div>
 							<div class="item_right">
 								<a class="item_name">{{good.name}}</a>
@@ -76,6 +76,8 @@
 		<ShopCart/>
 	</div>
 </template>
+
+
 
 <script>
 	import {mapState,mapActions} from 'vuex'

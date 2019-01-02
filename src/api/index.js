@@ -6,6 +6,7 @@
 import ajax from './ajax.js'
 
 const BASE_URL = '/api'
+// const BASE_URL = 'http://100.89.230.234:2400'
 
 //1.根据经纬度获取位置
 export const reqBanners = () => ajax(BASE_URL+'/banners')

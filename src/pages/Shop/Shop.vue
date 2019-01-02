@@ -11,7 +11,7 @@
 					</div>
 					<div class="head_detail">
 						<span class="head_name">{{this.Info.Store_name}}</span>
-						<img class="head_img" :src="'../../../static/img/store/'+this.Info.Store_src"></img>
+						<img class="head_img" :src="this.Info.Store_src"></img>
 						<div class="head_inf">
 							<img class="icon" src="../../../static/img/time.png" />
 							<span class="icon_text">配送约42分钟</span>

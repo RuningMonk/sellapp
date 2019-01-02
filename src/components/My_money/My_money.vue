@@ -1,93 +1,94 @@
 <template>
 	<div id="money">
-		<div id="money_title">
-			<a>我的资产</a>
-			<hr style="margin-top: 5px;width: 100%;float: left;" />
-		</div>
-		<div id="money_inf">
-			<ul class="inf_part">
+		<div id="money_title">我的资产</div>
+		<ul id="money_inf">
+			<li class="inf_part">
 				<img class="money_img" src="./img/package.png" />
 				<a class="money_name">红包</a>
 				<a class="money_detail">0个未使用</a>
-			</ul>
-			<ul class="inf_part">
+			</li>
+			<li class="inf_part">
 				<img class="money_img" src="./img/ticket.png" />
 				<a class="money_name">代金券</a>
 				<a class="money_detail">15张未使用</a>
-			</ul>
-			<ul class="inf_part">
+			</li>
+			<li class="inf_part">
 				<img class="money_img" src="./img/wallet.png" />
 				<a class="money_name">我的钱包</a>
 				<a class="money_detail">签到赢现金</a>
-			</ul>
-			<ul class="inf_part">
+			</li>
+			<li class="inf_part">
 				<img class="money_img" src="./img/quickpay.png" />
 				<a class="money_name">闪付</a>
 				<a class="money_detail">支付返外卖券</a>
-			</ul>
-		</div>
+			</li>
+		</ul>
 	</div>
 </template>
 
 <script>
-	export default{
-		
+	export default {
+
 	}
 </script>
 
 <style scoped="scoped">
-	
-	#money{
+	#money {
 		width: 100%;
-		height: 150px;
+		height: 140px;
 		border-bottom: solid 2px #999999;
+		position: relative;
 	}
-	
-	#money_title{
-		width: 100%;
-	}
-	
-	#money_title a{
+
+	#money_title {
+		width: auto;
 		font-size: 15px;
 		font-weight: 200;
-		padding-left: 18px;
-		margin-top: 10px;
-		width: 100%;
+		padding-left: 20px;
+		padding-top: 5px;
+		padding-bottom: 5px;
 	}
-	
-	#money_inf{
+
+	#money_title::after {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 1px;
+		background-color: #E5E5E5;
+		position: absolute;
+		left: 0;
+		margin-top: 5px;
+	}
+
+	#money_inf {
 		width: 100%;
 		height: 70%;
+		margin-bottom: 0;
 	}
-	
-	.inf_part{
-		width: 24%;
-		height: 80%;
+
+	.inf_part {
+		width: 25%;
+		height: auto;
 		text-align: center;
 		font-size: 15px;
-		margin-top: -10px;
-		margin-left: 1px;
 		float: left;
 	}
-	
-	.money_img{
+
+	.money_img {
 		width: 35px;
 		height: 35px;
-		float: left;
-		margin-left: 28px;
-		margin-top: 10px;
+		margin-top: 15px;
 	}
-	
-	.money_name{
+
+	.money_name {
 		float: left;
 		width: 100%;
 	}
-	
-	.money_detail{
+
+	.money_detail {
 		float: left;
 		font-size: 10px;
 		font-weight: 200;
 		width: 100%;
 	}
-	
 </style>

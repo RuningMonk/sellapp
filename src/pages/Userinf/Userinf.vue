@@ -45,11 +45,16 @@
 		computed:{
 			...mapState(['Userinfo']),
 			encryptphone(){
-				return this.Userinfo.phone.substr(0, 3) + '****' + this.Userinfo.phone.substr(7)
+				if(this.Userinfo.phone){
+					return this.Userinfo.phone.substr(0, 3) + '****' + this.Userinfo.phone.substr(7)
+				}else{
+					return ""
+				}
 			}
 		},
 		methods:{
 			alertbox(){
+				console.log("1");
 				MessageBox.confirm('确定要退出登录吗?').then(
 					action => {
 						//请求退出登录
@@ -74,6 +79,12 @@
 
 <style scoped="scoped">
 	
+	#userinf{
+		width: 100vw;
+		height: 100vh;
+		background-color: #f4f4f4;
+	}
+	
 	.head{
 		background-color: #fafafa;
 		height: 60px;
@@ -89,31 +100,27 @@
 		width: 25px;
 		height: 25px;
 		display: block;
-		position: absolute;    
-		margin-top: 15px;
-		margin-left: 4%;
+		position: absolute;
+    margin: 17.5px;
 	}
 	
 	.head_title{
 		text-align: center;
-		font-size: 20px;
-		font-weight: bold;
-		width: 100%;
-		float: left;
-		margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    float: left;
+    line-height: 60px;
 	}
 	
 	.body-bg{
-		background-color: #f4f4f4;
 		width: 100%;
 		height: 100%;
-		position: absolute;
-		z-index: -1;
-		top: 0;
 	}
 	
 	.body{
-		padding-top: 70px;
+		margin-top: 10px;
 	}
 	
 	.body_els{

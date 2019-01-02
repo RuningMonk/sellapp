@@ -11,87 +11,31 @@
 		<div id="banner_down" class="swiper-container container">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
-					<div class="classify">
-						<img src="./img/foods.png" @click="Classify_Click()" />
-						<a>美食</a>
+					<div class="line">
+						<div class="classify" v-for="(item,index) in this.Classify" :key="item.ID" v-if="index<5">
+							<img v-lazy="'../../../static/img/banner/'+item.src" />
+							<a>{{item.name}}</a>
+						</div>
 					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
+					<div class="line">
+						<div class="classify" v-for="(item,index) in this.Classify" :key="item.ID" v-if="index>=5 && index<10">
+							<img v-lazy="'../../../static/img/banner/'+item.src" />
+							<a>{{item.name}}</a>
+						</div>
 					</div>
 				</div>
 				<div class="swiper-slide">
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
+					<div class="line">
+						<div class="classify" v-for="(item,index) in this.Classify" :key="item.ID" v-if="index>=10 && index<15">
+							<img v-lazy="'../../../static/img/banner/'+item.src" />
+							<a>{{item.name}}</a>
+						</div>
 					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
-					</div>
-					<div class="classify">
-						<img src="./img/foods.png" />
-						<a>美食</a>
+					<div class="line">
+						<div class="classify" v-for="(item,index) in this.Classify" :key="item.ID" v-if="index>=15 && index<20">
+							<img v-lazy="'../../../static/img/banner/'+item.src" />
+							<a>{{item.name}}</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -108,18 +52,10 @@
 	} from 'vuex'
 
 	export default {
-		mounted() {
-			//创建一个Swiper对象,来实现轮播
-
-		},
-		methods: {
-			Classify_Click() {
-				$("#banner").css('background-color', 'red');
-			}
-		},
 		computed: {
 			...mapState([
-				'Banner'
+				'Banner',
+				'Classify'
 			])
 		},
 		watch: {
@@ -183,6 +119,7 @@
 		width: 100%;
 		height: 175px;
 		float: left;
+		max-width: none !important;
 	}
 
 	.food_img {
@@ -190,26 +127,32 @@
 		height: 100%;
 	}
 
+	.line {
+		width: 100%;
+		height: 50%;
+		float: left;
+	}
+
 	.classify {
 		font-size: 5px;
 		width: 20%;
 		float: left;
-		margin-top: 6px;
+		/* margin-top: 6px; */
 	}
 
-	.classify>img{
+	.classify>img {
 		width: 56px;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	
-	.classify>a{
+
+	.classify>a {
 		width: 100%;
 		text-align: center;
 		float: left;
 	}
-	
-	.swiper-slide{
+
+	.swiper-slide {
 		width: 100vw !important;
 	}
 
@@ -219,7 +162,6 @@
 		bottom: 0;
 		text-align: center;
 	}
-	
 </style>
 
 <style>

@@ -1,7 +1,7 @@
 <template>
 	<div id="Order">
 		<div class="order_head">订单</div>
-		<div class="order_detail">
+		<div class="order_detail" v-if="login">
 			<div class="tabs">
 				<router-link tag="div" to="/order/all" class="tab" :class="{on:tabindex==0}" @click.native="settab(0)">全部订单</router-link>
 				<router-link tag="div" to="/order/evaluation" class="tab new" :class="{on:tabindex==1}" @click.native="settab(1)">待评价</router-link>
@@ -10,6 +10,13 @@
 			<keep-alive>
 				<router-view />
 			</keep-alive>
+		</div>
+		<div class="order_out" v-if="!login">
+			<div class="out_inf">
+				<img src="../../../static/img/default_pic.png" class="out_img">
+				<div class="out_text">您还没有登录，请登录后查看订单</div>
+				<input type="button" class="out_btn" value="登录/注册" @click="goLogin">
+			</div>
 		</div>
 	</div>
 </template>
@@ -23,7 +30,8 @@
 	export default {
 		data() {
 			return {
-				tabindex: 0
+				tabindex: 0,
+				login:0
 			}
 		},
 		methods: {
@@ -33,6 +41,9 @@
 			]),
 			settab(index){
 				this.tabindex = index
+			},
+			goLogin(){
+				this.$router.replace('/login')
 			}
 		},
 		computed: {
@@ -44,8 +55,9 @@
 		async mounted() {		
 			//判断是否登录
 			if (Object.keys(this.Userinfo).length > 0) {
+				this.login = 1;
 				//获取当前用户的历史记录
-				let userphone = this.Userinfo.phone
+				let userphone = this.Userinfo.phone;
 				this.$store.dispatch('getHistory', {
 					userphone
 				})
@@ -55,7 +67,7 @@
 					this.getStores()
 				}
 			} else {
-				console.log("请登录")
+				this.login = 0;
 			}
 		}
 	}
@@ -128,6 +140,43 @@
 		position: absolute;
 		margin-left: 23%;
 		margin-top: 10px;
+	}
+	
+	.order_out{
+		width: 100vw;
+		height: 100%;
+		text-align: center;
+		background-color: #FFFFFF;
+	}
+	
+	.out_inf{
+		width: 100%;
+		padding-top: 25vh;
+	}
+	
+	.out_img{
+		width: 140px;
+		height: 140px;
+	}
+	
+	.out_text{
+		width: 100%;
+		font-size: 14px;
+		color: #D6D6D6;
+		margin-top: 15px;
+		letter-spacing: 2px;
+	}
+	
+	.out_btn{
+		width: 140px;
+		height: 35px;
+		background-color: #FFD300;
+		font-size: 15px;
+		font-weight: 400;
+		text-align: center;
+		border: none;
+		outline: none;
+		margin-top: 15px;
 	}
 	
 </style>

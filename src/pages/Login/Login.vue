@@ -1,6 +1,6 @@
 <template>
 	<div id="login">
-		<router-link id="back" to="/person"></router-link>
+		<router-link id="back" to="/person" @click.native="quite"></router-link>
 		<div class="title">
 			<span class="login_title">XX外卖</span>
 		</div>
@@ -147,6 +147,10 @@
 				//两次请求的url不能一样,否则判定为无效请求,所以加入时间变量,达到每次请求都能返回新的svg的效果
 				//因为没有用ajax请求,所以不需要考虑跨域
 				$(".captcha").attr('src','http://localhost:2400/captcha?time='+Date.now())
+			},
+			quite(){
+				//开放滚动
+				$(document.body).css({'overflow-y': 'auto'})
 			}
 		},
 		computed:{
@@ -160,6 +164,10 @@
 				return this.time>0 ? "已发送("+this.time+')':'获取验证码'
 			}
 			
+		},
+		mounted(){
+			//禁止滚动
+			$(document.body).css({'overflow-y': 'hidden'})
 		}
 	}
 </script>
@@ -172,13 +180,15 @@
 		background-size: cover;
 		width: 25px;
 		height: 25px;
-		margin: 15px 0 0 15px;
+		position: relative;
+		top: 25px;
+		left: 25px;
 		display: block;
 	}
 	
 	.title{
 		text-align: center;
-		padding-top: 70px;
+		padding-top: 15vh;
 	}
 	
 	.login_title{

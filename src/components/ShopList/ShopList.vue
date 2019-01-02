@@ -6,14 +6,14 @@
 		<div class="list_inf" v-if="Stores.length">
 			<ul>
 				<li class="Store" v-for="item in this.Stores" :key="item.ID" @click="updateinfo(item)">
-					<div class="Store_img">
-						<!-- <img :src="'../../../static/img/store/'+item.Store_src" /> -->
-						<img v-lazy="'../../../static/img/store/'+item.Store_src" />
+					<div class="Store_img clearfix">
+						<!-- <img v-lazy="'../../../static/img/store/'+item.Store_src" /> -->
+						<img v-lazy="item.Store_src" />
 					</div>
 					<div class="Store_inf">
 						<div class="inf_title">
 							<a class="inf_name">{{item.Store_name}}</a>
-							<a class="inf_more"></a>
+							<div class="inf_more"></div>
 						</div>
 						<div class="star-lv">
 							<Stars :point='item.Store_point'></Stars>
@@ -21,15 +21,20 @@
 							<a class="sells">月售{{item.Store_sell}}</a>
 							<a class="distance">46分钟|3.2km</a>
 						</div>
-						<a class="much_inf">起送 ¥0 |配送 ¥1.5 |人均 ¥18</a>
+						<div class="much_inf">起送 ¥0 |配送 ¥1.5 |人均 ¥18</div>
 						<div class="tag">
-							<a class="tag_img"></a>
-							<label class="tag_words">{{item.Store_classify}}</label>
-							<span class="tag_box red get">已领28元券</span>
-							<span class="tag_box red">10减10</span>
-							<span class="tag_box">支持自取</span>
-							<span class="tag_box">极速退款</span>
-							<a class="tag_more"></a>
+							<div class="tag_top">
+								<!-- <a class="tag_img"></a> -->
+								<img src="./img/little_store.png" class="tag_img">
+								<label class="tag_words">{{item.Store_classify}}</label>
+							</div>
+							<div class="tag_btm">
+								<span class="tag_box red get">已领28元券</span>
+								<span class="tag_box red">10减10</span>
+								<span class="tag_box">支持自取</span>
+								<span class="tag_box">极速退款</span>
+								<a class="tag_more"></a>
+							</div>
 						</div>
 					</div>
 				</li>
@@ -89,15 +94,26 @@
 </script>
 
 <style scoped="scoped">
+	
+	.clearfix::after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+	
 	#ShopList {
-		margin-top: -20px;
+		width: 100%;
+		height: auto;
+	}
+	
+	.list_header{
+		width: 100%;
 	}
 
 	.list_header span {
 		font-size: 17px;
 		font-weight: bold;
 		padding-left: 10px;
-		float: left;
 		width: 100%;
 	}
 
@@ -109,7 +125,7 @@
 	}
 
 	.Store {
-		margin-left: 10px;
+		padding-left: 10px;
 		height: 130px;
 	}
 
@@ -122,6 +138,7 @@
 
 	.Store_img img {
 		width: 100%;
+		height: 25vw;
 		max-width: 90px;
 		max-height: 70px;
 		margin-top: 8px;
@@ -135,7 +152,7 @@
 		float: left;
 	}
 
-	.Store_inf div {
+	.Store_inf>div {
 		float: left;
 		width: 100%;
 	}
@@ -153,16 +170,17 @@
 	}
 
 	.list_inf {
+		width: 100%;
 		height: 519px;
 		overflow: hidden;
 	}
 
 	.inf_name {
-		width: 80%;
-		height: 20%;
+		width: auto;
 		font-size: 16px;
 		font-weight: bold;
 		margin-left: 5px;
+		float: left;
 		color: black;
 		text-decoration: none;
 	}
@@ -173,14 +191,19 @@
 		background-size: cover;
 		width: 15px;
 		height: 15px;
-		margin-top: 3px;
-		margin-left: 26px;
+		float: right;
+		margin-top: 5px;
+		margin-right: 5%;
 	}
 
 	.star-lv {
 		padding-left: 5px;
 		margin-top: 5px;
 		width: 100%;
+	}
+	
+	#Stars{
+		float: left;
 	}
 
 	.star_points {
@@ -203,9 +226,10 @@
 
 	.distance {
 		font-size: 12px;
-		width: 30%;
+		width: auto;
 		float: right;
 		margin-top: -2px;
+		margin-right: 5%;
 	}
 
 	.much_inf {
@@ -221,23 +245,31 @@
 		margin-top: 5px;
 		padding-left: 8px;
 		width: 100%;
+		height: 45px;
+	}
+	
+	.tag_top{
+		width: 100%;
+		height: 50%;
+		position: relative;
+	}
+	
+	.tag_btm{
+		width: 100%;
+		height: 50%;
 	}
 
 	.tag_img {
-		background-image: url('./img/little_store.png');
-		background-repeat: no-repeat;
-		background-size: cover;
 		width: 12px;
 		height: 12px;
-		margin-top: 3px;
-		float: left;
+		position: absolute;
+		top: 3px;
 	}
 
 	.tag_words {
-		margin-left: 5px;
-		margin-bottom: 3px;
-		float: left;
 		width: 80%;
+		position: absolute;
+		left: 18px;
 	}
 
 	.tag_box {
