@@ -2,7 +2,7 @@
 	<div id="Comment">
 		<div class="grade">
 			<div class="grade_text">
-				<span class="point_text">4.4</span>
+				<span class="point_text">{{this.Info.Store_point}}</span>
 				<span class="text_title">商家评分</span>
 			</div>
 			<div class="grade_stars">
@@ -31,7 +31,7 @@
 						<!-- 这里如果写路径会被识别出普通的字符串,用require去请求服务器中的图片路径,才能够正常显示出来 -->
 						<img class="owner_img" :src="item.src?item.src:require('./img/default_pic.png')" />
 						<div class="name_point">
-							<span class="owner_name">{{item.name}}</span>
+							<span class="owner_name">{{item.name?item.name:'匿名用户'}}</span>
 							<span class="text_grey">评分</span><Stars :point="item.point" class="owner_point"/>
 						</div>
 						<div class="owner_time">
@@ -252,6 +252,7 @@
 		font-weight: 500;
 		width: auto;
 		height: 20px;
+		margin-top: 5px;
 		display: block;
 	}
 	
@@ -259,13 +260,12 @@
 		font-size: 12px;
 		float: left;
 		display: block;
-		margin-top: 5px;
 		color: #B6B6B6;
 	}
 	
 	.owner_point{
 		margin-left: 3px;
-		margin-top: 8px;
+		margin-top: 2px;
 		float: left;
 	}
 	
@@ -297,12 +297,15 @@
 		font-size: 14px;
 		color: #8a8a8a;
 		border: solid 1px #e8e8e8;
-		width: auto;
+		width: 50%;
 		height: 18px;
-		padding: 5px;
+		padding-left: 2px;
 		float: left;
-		line-height: 5px;
+		line-height: 17px;
 		margin-left: 5px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 	
 	.owner_text{

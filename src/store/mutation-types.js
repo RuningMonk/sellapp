@@ -19,3 +19,6 @@ export const REDUCE_FOOD_COUNT = 'reduce_food_count'	//减少当前food中选中
 export const CLEAR_CART = 'clear_cart'					//初始化购物车
 
 export const PAY_STATE = 'pay_state'					//更改支付状态
+
+export const EVA_FLAG = 'eva_flag'						//评价界面的显示控制
+export const EVA_INFO = 'eva_info'						//评价界面的基础信息

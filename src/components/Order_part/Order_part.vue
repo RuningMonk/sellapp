@@ -1,7 +1,8 @@
 <template>
 	<div class="part" :class="{first:this.first == true}">
 		<div class="left">
-			<img v-lazy="'../../../static/img/store/'+this.Store.Store_src" :key="'../../../static/img/store/'+this.Store.Store_src" class="pic">
+			<img :src="this.imgsrc" class="pic">
+			<!-- <img v-lazy="this.imgsrc" class="pic"> -->
 			<!-- 这里加:key是因为切换页面/路由时vue-lazyload不会自动update,需要加上:key重新指定图片地址才行... -->
 		</div>
 		<div class="right">
@@ -9,7 +10,6 @@
 				<div class="Rtop_left">
 					<div class="text_name">
 						<span>{{this.Store.Store_name}}</span>
-						<a class="right_icon"></a>
 					</div>
 					<div class="tags">
 						<span class="tag_box red" v-for="(item,index) in this.Store.Store_tags" :key="item.ID" v-if="index<=2">{{item}}</span>
@@ -20,12 +20,12 @@
 			</div>
 			<div class="Rbottom">
 				<div class="things_price container">
-					<span class="things" :class="{only:this.obj.goods.length==1}">{{this.obj.goods[0]}}</span>
-					<span class="count" v-if="this.obj.goods.length>=2">等&nbsp;{{this.obj.goods.length}}&nbsp;件商品</span>
+					<span class="things" :class="{only:this.obj.food.length==1}">{{this.obj.food[0]}}</span>
+					<span class="count" v-if="this.obj.food.length>=2">等&nbsp;{{this.obj.food.length}}&nbsp;件商品</span>
 					<span class="price">¥&nbsp;{{this.obj.price}}</span>
 				</div>
 				<div class="btns container">
-					<input type="button" class="btn-default comment" v-if="!this.obj.evaluated" value="评价">
+					<input type="button" class="btn-default comment" v-if="this.obj.point==0" value="评价" @click="evaluateBtn()">
 					<input type="button" class="btn-default" value="再来一单">
 					<input type="button" class="btn-default" value="相似商家">
 				</div>
@@ -36,7 +36,8 @@
 
 <script>
 	import {
-		mapState
+		mapState,
+		mapActions
 	} from 'vuex'
 
 	export default {
@@ -51,10 +52,19 @@
 		},
 		computed: {
 			...mapState([
-				'Stores'
-			])
+				'Stores',
+				'EvaluateFlag'
+			]),
+			imgsrc(){
+				let src = this.Store.Store_src;
+				return src;
+			}
 		},
 		methods: {
+			...mapActions([
+				'EvaluateToggle',
+				'EvaluateUpdate'
+			]),
 			findStore() {
 				let get = {}
 				const Stores = this.Stores
@@ -65,13 +75,25 @@
 					}
 				}
 				this.Store = get
+			},
+			evaluateBtn(){
+				const that = this;
+				//上传当前评价目标相关信息
+				let Info = {};
+				Info.food = that.obj.food;
+				Info.trade_no = that.obj.trade_no;
+				Info.time = that.obj.time;
+				Info.Store_name = that.Store.Store_name;
+				Info.Store_src = that.Store.Store_src;
+				Info.delivery = that.Store.delivery;
+				this.EvaluateUpdate(Info);
+				//让评价页面显示
+				document.getElementById('Evaluate').style.display = 'flex';
+				this.EvaluateToggle(true)
 			}
 		},
 		mounted() {
 			this.findStore()
-			
-// 			console.log($(".pic")[0])
-// 			$(".pic").src = '../../../static/img/store/' + this.Store.Store_src
 		},
 		watch: {
 			Stores(value) {
@@ -157,8 +179,22 @@
 		line-height: 44px;
 	}
 	
-	.text_name>span,a{
+	.text_name>span{
 		float: left;
+	}
+	
+	.text_name>span::after{
+		content: '';
+		position: absolute;
+		
+		background-image: url(../../../static/img/right.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+		margin-top: 13px;
+		margin-left: 10px;
+		opacity: 0.4;
+		width: 20px;
+		height: 20px;
 	}
 	
 	.tags{
@@ -195,18 +231,6 @@
 		line-height: 8px;
 	}
 	
-	.right_icon {
-		background-image: url(../../../static/img/right.png);
-		background-repeat: no-repeat;
-		background-size: cover;
-		margin-top: 13px;
-		margin-left: 10px;
-		opacity: 0.4;
-		width: 20px;
-		height: 20px;
-		display: block;
-	}
-	
 	.Rbottom{
 		width: 100%;
 		height: 100px;
@@ -233,7 +257,7 @@
 	}
 	
 	.only{
-		width: auto;
+		width: 80%;
 	}
 	
 	.count{

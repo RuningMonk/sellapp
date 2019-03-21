@@ -1,8 +1,8 @@
 <template>
 	<div id="all">
-		<ul style="height: 101%;">
+		<ul :style="{'height':ulHeight}">
 			<li style="padding-top: 7px;">
-				<OrderPart v-for="item in this.History" :key="item.ID" :obj="item" :first="item.ID=='1'?true:false" />
+				<OrderPart v-for="item in this.ReverseHistory" :key="item.ID" :obj="item" :first="item.ID=='1'?true:false" />
 			</li>
 		</ul>
 	</div>
@@ -17,7 +17,16 @@
 		computed: {
 			...mapState([
 				'History'
-			])
+			]),
+			ulHeight(){
+				let height = 'calc(' + this.History.length*28 + '% + 90px)';
+				return height
+			},
+			ReverseHistory(){
+				console.log(this.History);
+				console.log(this.History.reverse())
+				return this.History
+			}
 		},
 		components:{
 			OrderPart
@@ -46,6 +55,16 @@
 		height: 100%;
 		margin-top: -50px;
 		overflow: hidden;
+	}
+	
+	.bottom{
+		width: 97vw;
+		height: 170px;
+		margin-top: 7px;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #FFFFFF;
+		box-shadow: 0px 0px 6px #C5C5C5;
 	}
 	
 </style>

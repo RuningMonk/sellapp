@@ -33,6 +33,8 @@ export const reqCommentsList = ({shop_id}) => ajax(BASE_URL+'/shop_comments',{sh
 //12.店铺的搜索
 export const reqStoreSearch = ({search}) => ajax(BASE_URL+'/search',{search})
 //13.支付
-export const reqPay = ({price,id,name,descript}) => ajax(BASE_URL+'/pay',{price,id,name,descript},'POST')
+export const reqPay = ({price,trade_no,name,shop_id}) => ajax(BASE_URL+'/pay',{price,trade_no,name,shop_id},'POST')
 //14.查询订单记录
 export const reqHistory = ({userphone}) => ajax(BASE_URL+'/history',{userphone},'POST')
+//15.上传评价信息
+export const reqEvaluate = ({sql}) => ajax(BASE_URL + '/manager_update',{sql},'POST')

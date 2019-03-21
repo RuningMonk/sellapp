@@ -16,6 +16,8 @@ import {
 	REDUCE_FOOD_COUNT,
 	CLEAR_CART,
 	PAY_STATE,
+	EVA_FLAG,
+	EVA_INFO
 	
 } from './mutation-types'
 
@@ -73,5 +75,11 @@ export default {
 	},
 	[PAY_STATE](state,{pay}){
 		state.Pay = pay
+	},
+	[EVA_FLAG](state,{flag}){
+		state.EvaluateFlag = flag
+	},
+	[EVA_INFO](state,{info}){
+		state.EvaluateInfo = info
 	}
 }

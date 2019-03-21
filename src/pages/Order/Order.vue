@@ -18,14 +18,13 @@
 				<input type="button" class="out_btn" value="登录/注册" @click="goLogin">
 			</div>
 		</div>
+		<Evaluate></Evaluate>
 	</div>
 </template>
 
 <script>
-	import {
-		mapActions,
-		mapState
-	} from 'vuex'
+	import Evaluate from '../../components/Evaluate/Evaluate.vue'
+	import {mapActions,mapState} from 'vuex'
 
 	export default {
 		data() {
@@ -49,10 +48,14 @@
 		computed: {
 			...mapState([
 				'Userinfo',
-				'Stores'
+				'Stores',
+				'EvaluateFlag'
 			])
 		},
-		async mounted() {		
+		components: {
+			Evaluate
+		},
+		async mounted() {
 			//判断是否登录
 			if (Object.keys(this.Userinfo).length > 0) {
 				this.login = 1;

@@ -15,7 +15,9 @@ import {
 	ADD_FOOD_COUNT,
 	REDUCE_FOOD_COUNT,
 	CLEAR_CART,
-	PAY_STATE
+	PAY_STATE,
+	EVA_FLAG,
+	EVA_INFO
 	
 } from './mutation-types'
 
@@ -28,7 +30,8 @@ import {
 	reqCommentsList,
 	reqHistory,
 	reqStoreSearch,
-	reqPay
+	reqPay,
+	reqEvaluate
 	
 } from '../api'
 
@@ -92,6 +95,15 @@ export default{
 			commit(RESET_USER_INFO)
 		}
 	},
+	//异步更新评价信息
+	async UpdateComment({commit},sql){
+		//发送异步ajax请求
+		const result = await reqEvaluate({sql})
+		//根据结果提交一个mutation
+		if(result.OK===true){
+			console.log('ok')
+		}
+	},
 	//同步记录用户信息
 	recordUser ({commit},userinfo){
 		commit(RECEIVE_USER_INFO,{userinfo})
@@ -123,8 +135,8 @@ export default{
 		}
 	},
 	//异步获取支付反馈
-	async getPayState({commit},{price,id,name,descript}){
-		const result = await reqPay({price,id,name,descript})
+	async getPayState({commit},{price,trade_no,name,shop_id}){
+		const result = await reqPay({price,trade_no,name,shop_id})
 		
 		if(result.OK===true){
 			const pay = result.data
@@ -139,5 +151,13 @@ export default{
 			const history = result.data
 			commit(RECEIVE_HISTORY,{history})
 		}
+	},
+	//更改评价页面显示的flag
+	EvaluateToggle({commit},flag){
+		commit(EVA_FLAG,{flag})
+	},
+	//更新评价页面的基础信息
+	EvaluateUpdate({commit},info){
+		commit(EVA_INFO,{info})
 	}
 }

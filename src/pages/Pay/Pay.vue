@@ -110,10 +110,10 @@
 			},
 			goPay(){
 				let price = this.totalPrice
-				let id = Math.ceil(Math.random()*1000000000000000000).toString()
-				let name = '测试商品'
-				let descript = '测试商品描述'
-				this.$store.dispatch('getPayState',{price,id,name,descript})
+				let trade_no = Math.ceil(Math.random()*1000000000000000000).toString()
+				let name = this.name
+				let shop_id = this.Info.ID.toString()
+				this.$store.dispatch('getPayState',{price,trade_no,name,shop_id})
 			}
 		},
 		computed: {
@@ -124,7 +124,16 @@
 			]),
 			...mapGetters([
 				'totalPrice'
-			])
+			]),
+			name(){
+				let str = '';
+				for(let i = 0;i < this.CartFoods.length;i++){
+					str += this.CartFoods[i].name + ',';
+				};
+				str = str.substr(0,str.length - 1);
+				console.log(str);
+				return str;
+			}
 		},
 		watch:{
 			Pay(value){

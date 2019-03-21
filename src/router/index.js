@@ -5,7 +5,6 @@ import VueRouter from 'vue-router'
 const Home = () => import('../pages/Home/Home.vue')
 const Order = () => import('../pages/Order/Order.vue')
 const Person = () => import('../pages/Person/Person.vue')
-const Lightning = () => import('../pages/Lightning/Lightning.vue')
 // const Pay = () => import('../pages/Pay/Pay.vue')
 
 import Login from '../pages/Login/Login.vue'
@@ -72,13 +71,6 @@ export default new VueRouter({
 		{
 			path:'/person',
 			component:Person,
-			meta:{
-				GuideShow:true
-			}
-		},
-		{
-			path:'/lightning',
-			component:Lightning,
 			meta:{
 				GuideShow:true
 			}

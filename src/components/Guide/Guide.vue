@@ -6,12 +6,6 @@
 			</span>
 			<span>首页</span>
 		</router-link>
-		<router-link tag="div" to="/lightning" class="guide_items" :class="{on: Guideindex==1}" @click.native="setindex(1)">
-			<span class="item_icon">
-				<img class="icon_font" src="./img/lightning_none.png" />
-			</span>
-			<span>闪购</span>
-		</router-link>
 		<router-link tag="div" to="/order/all" class="guide_items" :class="{on: Guideindex==2}" @click.native="setindex(2)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/order-none.png" />

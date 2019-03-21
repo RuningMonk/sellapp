@@ -96,5 +96,8 @@ export default {
 			src: '11.png',
 			name: '全部分类'
 		}
-	]
+	],
+	
+	EvaluateFlag: false,		//控制评价页面的显示
+	EvaluateInfo: [],			//当前评价页面的数据
 }

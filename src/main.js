@@ -7,6 +7,7 @@ import store from './store'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import loading from './common/imgs/loading.gif'		//引入图片懒加载所需的gif
+import error from './common/imgs/error.png'			//引入懒加载失败时的图片
 import $ from 'jquery'
 
 //项目全局引入mint-ui
@@ -14,7 +15,9 @@ Vue.use(Mint)
 
 //项目全局引入lazyload
 Vue.use(VueLazyLoad,{
-	loading
+	loading,
+	error,
+	attempt: 3
 })
 
 new Vue({

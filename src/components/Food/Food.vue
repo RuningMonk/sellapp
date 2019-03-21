@@ -3,7 +3,7 @@
 		<transition name="fade">
 			<div id="Food" v-if="isShow" @click="toggleShow()">
 				<div class="Food_info" @click.stop="">
-					<img class="info_img" v-lazy="'../../../static/img/goods/'+this.food.src" />
+					<img class="info_img" v-lazy="this.food.src" />
 					<div class="info_detail">
 						<div class="tags" v-if="food.tags">
 							<div v-for="tag in food.tags" :key="tag.ID" class="tag">{{tag}}</div>
@@ -32,8 +32,7 @@
 	
 	export default{
 		props:{
-			food: Object,
-			
+			food: Object
 		},
 		data(){
 			return{
