@@ -109,10 +109,10 @@
 				this.tabindex = index
 			},
 			goPay(){
-				let price = this.totalPrice
-				let trade_no = Math.ceil(Math.random()*1000000000000000000).toString()
-				let name = this.name
-				let shop_id = this.Info.ID.toString()
+				let price = this.totalPrice + this.Info.fee;
+				let trade_no = Math.ceil(Math.random()*1000000000000000000).toString();
+				let name = this.name;
+				let shop_id = this.Info.ID.toString();
 				this.$store.dispatch('getPayState',{price,trade_no,name,shop_id})
 			}
 		},

@@ -100,4 +100,5 @@ export default {
 	
 	EvaluateFlag: false,		//控制评价页面的显示
 	EvaluateInfo: [],			//当前评价页面的数据
+	EvaluateState: false,	//监控评价是否成功
 }

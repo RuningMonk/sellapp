@@ -63,7 +63,8 @@
 		methods: {
 			...mapActions([
 				'EvaluateToggle',
-				'EvaluateUpdate'
+				'EvaluateUpdate',
+				'EvaluateFinish'
 			]),
 			findStore() {
 				let get = {}
@@ -87,6 +88,8 @@
 				Info.Store_src = that.Store.Store_src;
 				Info.delivery = that.Store.delivery;
 				this.EvaluateUpdate(Info);
+				//更新评价状态
+				this.EvaluateFinish(false);
 				//让评价页面显示
 				document.getElementById('Evaluate').style.display = 'flex';
 				this.EvaluateToggle(true)

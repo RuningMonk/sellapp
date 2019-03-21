@@ -26,7 +26,7 @@
 		</div>
 		<div class="comments_list">
 			<ul style="margin-bottom: 0">
-				<li v-for="item in this.Comments" :key="item.ID" class="comment">
+				<li v-for="item in this.Comments" :key="item.ID" class="comment" v-if="item.point!=0">
 					<div class="owner">
 						<!-- 这里如果写路径会被识别出普通的字符串,用require去请求服务器中的图片路径,才能够正常显示出来 -->
 						<img class="owner_img" :src="item.src?item.src:require('./img/default_pic.png')" />

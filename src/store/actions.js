@@ -17,7 +17,8 @@ import {
 	CLEAR_CART,
 	PAY_STATE,
 	EVA_FLAG,
-	EVA_INFO
+	EVA_INFO,
+	EVA_STATE
 	
 } from './mutation-types'
 
@@ -101,7 +102,8 @@ export default{
 		const result = await reqEvaluate({sql})
 		//根据结果提交一个mutation
 		if(result.OK===true){
-			console.log('ok')
+			let flag = true;
+			commit(EVA_STATE,{flag})
 		}
 	},
 	//同步记录用户信息
@@ -159,5 +161,9 @@ export default{
 	//更新评价页面的基础信息
 	EvaluateUpdate({commit},info){
 		commit(EVA_INFO,{info})
+	},
+	//更新评价完成监控的状态
+	EvaluateFinish({commit},flag){
+		commit(EVA_STATE,{flag})
 	}
 }

@@ -17,7 +17,8 @@ import {
 	CLEAR_CART,
 	PAY_STATE,
 	EVA_FLAG,
-	EVA_INFO
+	EVA_INFO,
+	EVA_STATE
 	
 } from './mutation-types'
 
@@ -81,5 +82,8 @@ export default {
 	},
 	[EVA_INFO](state,{info}){
 		state.EvaluateInfo = info
+	},
+	[EVA_STATE](state,{flag}){
+		state.EvaluateState = flag
 	}
 }

@@ -23,9 +23,7 @@
 				return height
 			},
 			ReverseHistory(){
-				console.log(this.History);
-				console.log(this.History.reverse())
-				return this.History
+				return this.History.reverse()
 			}
 		},
 		components:{

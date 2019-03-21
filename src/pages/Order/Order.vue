@@ -49,7 +49,8 @@
 			...mapState([
 				'Userinfo',
 				'Stores',
-				'EvaluateFlag'
+				'EvaluateFlag',
+				'EvaluateState'
 			])
 		},
 		components: {
@@ -72,7 +73,18 @@
 			} else {
 				this.login = 0;
 			}
-		}
+		},
+		watch: {
+			EvaluateState(newValue, oldValue) {
+				if(newValue){
+					this.$nextTick(function(){
+						let userphone = this.Userinfo.phone;
+						this.getHistory({userphone});
+						console.log('更新!')
+					})
+				}
+			}
+		},
 	}
 </script>
 

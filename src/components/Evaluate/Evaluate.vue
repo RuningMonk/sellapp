@@ -110,7 +110,8 @@
 		computed: {
 			...mapState([
 				'EvaluateFlag',
-				'EvaluateInfo'
+				'EvaluateInfo',
+				'EvaluateState'
 			]),
 			FoodName(){
 				let name = '';
@@ -126,7 +127,8 @@
 			...mapActions([
 				'EvaluateToggle',
 				'EvaluateUpdate',
-				'UpdateComment'
+				'UpdateComment',
+				'EvaluateFinish'
 			]),
 			toggle() {
 				this.EvaluateToggle(false)
@@ -185,6 +187,14 @@
 				}
 				
 				this.UpdateComment(sql);
+			}
+		},
+		watch: {
+			EvaluateState(newValue, oldValue){
+				if(oldValue == false){
+					this.EvaluateFinish(true);
+					this.toggle();
+				}
 			}
 		}
 	}
