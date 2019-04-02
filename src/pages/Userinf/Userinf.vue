@@ -11,17 +11,17 @@
 					<a class="inf_set"></a>
 					<span class="body_els_inf" :class="{'default_pic':this.Userinfo.src==null ? true:false}" ></span>
 				</div>
-				<div class="body_els">
+				<div class="body_els" @click="RouterPush(2)">
 					<a class="body_els_title">用户名</a>
 					<a class="inf_set"></a>
 					<span class="body_els_inf">{{this.Userinfo.username? this.Userinfo.username:'未设置'}}</span>
 				</div>
-				<div class="body_els">
+				<div class="body_els" @click="RouterPush(3)">
 					<a class="body_els_title">账号密码</a>
 					<a class="inf_set"></a>
 					<span class="body_els_inf">{{this.Userinfo.password? '点击更改':'未设置'}}</span>
 				</div>
-				<div class="body_els">
+				<div class="body_els" @click="RouterPush(4)">
 					<a class="body_els_title">手机号</a>
 					<a class="inf_set"></a>
 					<span class="body_els_inf">{{this.encryptphone}}</span>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import {mapState,mapActions} from 'vuex'
 	import {MessageBox,Toast} from 'mint-ui'
 	
 	export default{
@@ -53,8 +53,25 @@
 			}
 		},
 		methods:{
+			...mapActions([
+				'getLoginState'
+			]),
+			RouterPush(index){
+				let els;
+				switch (index){
+					case 2:
+						els = '用户名';
+						break;
+					case 3:
+						els = '密码';
+						break;
+					case 4:
+						els = '手机号';
+						break;
+				};
+				this.$router.push({path:'/usersetting',query:{els:els}})
+			},
 			alertbox(){
-				console.log("1");
 				MessageBox.confirm('确定要退出登录吗?').then(
 					action => {
 						//请求退出登录
@@ -73,6 +90,9 @@
 					}
 				);
 			}
+		},
+		async mounted(){
+			this.getLoginState()
 		}
 	}
 </script>
@@ -116,7 +136,7 @@
 	
 	.body-bg{
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 70px)
 	}
 	
 	.body{

@@ -19,7 +19,7 @@
 			<div class="goods">
 				<ul>
 					<li v-for="item in this.CartFoods" :key="item.ID" class="goods_item">
-						<img v-lazy="'../../../static/img/goods/'+item.src" class="item_img">
+						<img v-lazy="item.src" class="item_img">
 						<div class="item_text">
 							<div class="name_price">
 								<div class="item_name">{{item.name}}</div>
@@ -290,7 +290,8 @@
 		width: auto;
 		height: 20px;
 		font-size: 12px;
-		border: solid 1px #000000;
+		border: solid 1px #5BCBAD;
+		color: #5BCBAD;
 	}
 
 	.goods {

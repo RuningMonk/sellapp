@@ -5,10 +5,10 @@ import VueRouter from 'vue-router'
 const Home = () => import('../pages/Home/Home.vue')
 const Order = () => import('../pages/Order/Order.vue')
 const Person = () => import('../pages/Person/Person.vue')
-// const Pay = () => import('../pages/Pay/Pay.vue')
 
 import Login from '../pages/Login/Login.vue'
 import Userinf from '../pages/Userinf/Userinf.vue'
+import UserSetting from '../pages/UserSetting/UserSetting.vue'
 import Shop from '../pages/Shop/Shop.vue'
 import Pay from '../pages/Pay/Pay.vue'
 import ShopGoods from '../components/Shop_Goods/Shop_Goods.vue'
@@ -16,6 +16,7 @@ import ShopComment from '../components/Shop_Comment/Shop_Comment.vue'
 import ShopStore from '../components/Shop_Store/Shop_Store.vue'
 import Search from '../components/Search/Search.vue'
 import Pay_delivery from '../components/Pay_delivery/Pay_delivery.vue'
+import Pay_self from '../components/Pay_self/Pay_self.vue'
 import Order_all from '../components/Order_all/Order_all.vue'
 import Order_evaluation from '../components/Order_evaluation/Order_evaluation.vue'
 import Order_refund from '../components/Order_refund/Order_refund.vue'
@@ -84,6 +85,10 @@ export default new VueRouter({
 			component:Userinf
 		},
 		{
+			path:'/usersetting',
+			component:UserSetting
+		},
+		{
 			path:'/pay',
 			component:Pay,
 			children:[
@@ -93,7 +98,7 @@ export default new VueRouter({
 				},
 				{
 					path:'/pay/self',
-					// component:Pay_delivery
+					component:Pay_self
 				}
 			]
 		},

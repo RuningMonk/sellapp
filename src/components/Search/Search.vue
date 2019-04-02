@@ -21,7 +21,7 @@
 						<li class="empty_show" v-if="empty">抱歉,未找到类似店铺...</li>
 						<li class="Store" v-if="!empty && !default_show" v-for="item in SearchStores" :key="item.ID" @click="updateinfo(item)">
 							<div class="Store_img">
-								<img :src="'../../../static/img/store/'+item.Store_src" />
+								<img :src="item.Store_src" />
 							</div>
 							<div class="Store_inf">
 								<div class="inf_title">

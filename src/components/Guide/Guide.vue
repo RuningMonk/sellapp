@@ -6,13 +6,13 @@
 			</span>
 			<span>首页</span>
 		</router-link>
-		<router-link tag="div" to="/order/all" class="guide_items" :class="{on: Guideindex==2}" @click.native="setindex(2)">
+		<router-link tag="div" to="/order/all" class="guide_items" :class="{on: Guideindex==1}" @click.native="setindex(1)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/order-none.png" />
 			</span>
 			<span>订单</span>
 		</router-link>
-		<router-link tag="div" to="/person" class="guide_items" :class="{on: Guideindex==3}" @click.native="setindex(3)">
+		<router-link tag="div" to="/person" class="guide_items" :class="{on: Guideindex==2}" @click.native="setindex(2)">
 			<span class="item_icon">
 				<img class="icon_font" src="./img/mine.png" />
 			</span>
@@ -33,19 +33,17 @@
 				this.Guideindex = index
 			},
 			checktab(){
-				let url = window.location.href.substring(24)
+				let url = window.location.href.substring(24);
+
 				switch(url){
 					case 'home':
 						this.setindex(0);
 						break;
-					case 'lightning':
+					case 'order/all':
 						this.setindex(1);
 						break;
-					case 'order':
-						this.setindex(2);
-						break;
 					case 'person':
-						this.setindex(3);
+						this.setindex(2);
 						break;
 					default:
 						this.setindex(0);

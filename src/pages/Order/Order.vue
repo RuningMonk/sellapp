@@ -80,7 +80,6 @@
 					this.$nextTick(function(){
 						let userphone = this.Userinfo.phone;
 						this.getHistory({userphone});
-						console.log('更新!')
 					})
 				}
 			}

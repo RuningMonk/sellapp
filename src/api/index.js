@@ -38,3 +38,5 @@ export const reqPay = ({price,trade_no,name,shop_id}) => ajax(BASE_URL+'/pay',{p
 export const reqHistory = ({userphone}) => ajax(BASE_URL+'/history',{userphone},'POST')
 //15.上传评价信息
 export const reqEvaluate = ({sql}) => ajax(BASE_URL + '/manager_update',{sql},'POST')
+//16.上传个人信息修改
+export const reqSetUp = ({sql}) => ajax(BASE_URL + '/manager_update',{sql},'POST')

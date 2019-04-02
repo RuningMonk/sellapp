@@ -23,3 +23,5 @@ export const PAY_STATE = 'pay_state'					//更改支付状态
 export const EVA_FLAG = 'eva_flag'						//评价界面的显示控制
 export const EVA_INFO = 'eva_info'						//评价界面的基础信息
 export const EVA_STATE = 'eva_state'					//监控评价是否成功
+
+export const SETUP_STATE = 'setup_state'				//监控修改信息是否成功

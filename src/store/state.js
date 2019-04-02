@@ -14,6 +14,12 @@ export default {
 	CartFoods: [], 		//购物车中选中的食品
 	SearchStores: [],	//搜索店铺的结果
 	Pay: [], 			//支付状态
+	
+	EvaluateFlag: false,		//控制评价页面的显示
+	EvaluateInfo: [],			//当前评价页面的数据
+	EvaluateState: false,		//监控评价是否成功
+	
+	SetUpState: false,			//监控修改信息是否成功
 
 	Classify: [			//首页分类列表
 		{
@@ -96,9 +102,5 @@ export default {
 			src: '11.png',
 			name: '全部分类'
 		}
-	],
-	
-	EvaluateFlag: false,		//控制评价页面的显示
-	EvaluateInfo: [],			//当前评价页面的数据
-	EvaluateState: false,	//监控评价是否成功
+	]
 }

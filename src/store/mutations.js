@@ -18,7 +18,8 @@ import {
 	PAY_STATE,
 	EVA_FLAG,
 	EVA_INFO,
-	EVA_STATE
+	EVA_STATE,
+	SETUP_STATE
 	
 } from './mutation-types'
 
@@ -85,5 +86,8 @@ export default {
 	},
 	[EVA_STATE](state,{flag}){
 		state.EvaluateState = flag
+	},
+	[SETUP_STATE](state,{flag}){
+		state.SetUpState = flag
 	}
 }

@@ -18,7 +18,8 @@ import {
 	PAY_STATE,
 	EVA_FLAG,
 	EVA_INFO,
-	EVA_STATE
+	EVA_STATE,
+	SETUP_STATE
 	
 } from './mutation-types'
 
@@ -32,7 +33,8 @@ import {
 	reqHistory,
 	reqStoreSearch,
 	reqPay,
-	reqEvaluate
+	reqEvaluate,
+	reqSetUp
 	
 } from '../api'
 
@@ -106,6 +108,15 @@ export default{
 			commit(EVA_STATE,{flag})
 		}
 	},
+	async SetUpdate({commit},sql){
+		//发送异步ajax请求
+		const result = await reqSetUp({sql})
+		//根据结果提交一个mutation
+		if(result.OK===true){
+			let flag = true;
+			commit(SETUP_STATE,{flag})
+		}
+	},
 	//同步记录用户信息
 	recordUser ({commit},userinfo){
 		commit(RECEIVE_USER_INFO,{userinfo})
@@ -165,5 +176,8 @@ export default{
 	//更新评价完成监控的状态
 	EvaluateFinish({commit},flag){
 		commit(EVA_STATE,{flag})
+	},
+	SetupStateUpdate({commit},flag){
+		commit(SETUP_STATE,{flag})
 	}
 }
