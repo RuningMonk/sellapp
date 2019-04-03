@@ -228,7 +228,7 @@
 	.owner{
 		width: 100%;
 		height: 45px;
-		margin-bottom: 5px;
+		/* margin-bottom: 5px; */
 	}
 	
 	.owner_img{

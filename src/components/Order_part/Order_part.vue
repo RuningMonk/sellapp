@@ -135,8 +135,10 @@
 	}
 
 	.pic {
-		width: 45px;
-		height: 45px;
+		/* width: 45px;
+		height: 45px; */
+		width: 12vw;
+		height: 12vw;
 		border-radius: 5px;
 		border: solid 1px black;
 		margin-top: 15px;
